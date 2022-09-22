@@ -57,7 +57,7 @@ pipeline {
            dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
            }
            }
-       }
+       
            }
             
      stage('Docker Build and Push') {
@@ -79,4 +79,5 @@ pipeline {
         }
       }
     }
+}
 
