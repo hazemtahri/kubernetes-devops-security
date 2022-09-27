@@ -8,6 +8,8 @@ pipeline {
               archive 'target/*.jar' 
             }
         }  
+	  
+	  
      stage('Unit Testing') {
             steps {
               sh "mvn test"
@@ -28,6 +30,8 @@ pipeline {
         }  
      
           }
+	  
+	  
     stage('SonarQube SAST') {
             steps {
               withSonarQubeEnv('SonarQube') {
@@ -43,7 +47,7 @@ pipeline {
  
      }
     }
-     stage('Vulnerability Scan - Docker') {
+     /*stage('Vulnerability Scan - Docker') {
       steps {
       
          		sh "mvn dependency-check:check"
@@ -51,7 +55,7 @@ pipeline {
 	 		}
       
        
-           }
+           }*/
             
      stage('Docker Build and Push') {
        steps {
