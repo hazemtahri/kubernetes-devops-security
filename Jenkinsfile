@@ -47,7 +47,7 @@ pipeline {
  
      }
     }
-  	 stage('Vulnerability Scan - Docker') {
+  	/* stage('Vulnerability Scan - Docker') {
        steps {
          parallel(
          	"Dependency Scan": {
@@ -59,7 +59,7 @@ pipeline {
 	 		 	
        	)
        }
-     }
+     }*/
             
      stage('Docker Build and Push') {
        steps {
@@ -69,7 +69,7 @@ pipeline {
            sh 'docker push hazemtahri/numeric-app:""$GIT_COMMIT""'
         }
       }
-     }
+     }/*
     stage('K8S Deployment - Dev') {
       steps {
      
@@ -86,7 +86,7 @@ pipeline {
                jacoco execPattern: 'target/jacoco.exec'
 		
 		dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-           }    
+           }  */  
         }  
 }
 
