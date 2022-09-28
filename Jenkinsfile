@@ -56,7 +56,7 @@ pipeline {
  
      }
     }
-  	 stage('Vulnerability Scan - Docker') {
+  	/* stage('Vulnerability Scan - Docker') {
        steps {
          parallel(
          	"Dependency Scan": {
@@ -71,7 +71,7 @@ pipeline {
 	 		 	
        	)
        }
-     }
+     }*/
             
      stage('Docker Build and Push') {
        steps {
@@ -82,7 +82,7 @@ pipeline {
         }
       }
      }
-	       stage('Vulnerability Scan - Kubernetes') {
+	      /* stage('Vulnerability Scan - Kubernetes') {
        steps {
          parallel(
            "OPA Scan": {
@@ -94,7 +94,7 @@ pipeline {
            
          )
       }
-    }
+    }*/
 	  
 stage('K8S Deployment - DEV') {
        steps {
