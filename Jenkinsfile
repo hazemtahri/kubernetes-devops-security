@@ -19,7 +19,7 @@ pipeline {
         }  
 	  
 	  
-     stage('Unit Testing') {
+     /*stage('Unit Testing') {
             steps {
               sh "mvn test"
               
@@ -33,9 +33,9 @@ pipeline {
 		 post {
              always {
               
-		pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+		 pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
 		
-           }    
+           /*}    
         }  
      
           }
@@ -56,7 +56,7 @@ pipeline {
  
      }
     }
-  	/* stage('Vulnerability Scan - Docker') {
+  	 stage('Vulnerability Scan - Docker') {
        steps {
          parallel(
          	"Dependency Scan": {
