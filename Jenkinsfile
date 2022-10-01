@@ -116,9 +116,7 @@ stage('K8S Deployment - DEV') {
        }
      }
     
-    
-    }
-	    stage('Integration Tests - DEV') {
+  	    stage('Integration Tests - DEV') {
        steps {
          script {
            try {
@@ -133,7 +131,9 @@ stage('K8S Deployment - DEV') {
            }
         }
        }
-     }
+     }  
+    }
+
 
 	/* post {
              always {
