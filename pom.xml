@@ -19,6 +19,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<tomcat.version>9.0.43</tomcat.version>
+		<spring-security.version>5.4.4</spring-security.version>
 	</properties>
 
 	<dependencies>
@@ -37,7 +39,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -46,6 +47,9 @@
 		</dependency>
 		
 		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -54,7 +58,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
 			<!--                   Jacoco Plugin                   -->
 			   <plugin>
 			    <groupId>org.jacoco</groupId>
@@ -75,6 +78,7 @@
 			     </execution>
 			    </executions>
 			   </plugin>
+
 			   <!--                   PITest Mutation Plugin                   -->
 			   <plugin>
 			    <groupId>org.pitest</groupId>
@@ -95,6 +99,7 @@
 			        </outputFormats>
 			    </configuration>
 			   </plugin>
+
 			<!--                   Dependency Check Plugin                   -->
 			   <plugin>
 			    <groupId>org.owasp</groupId>
@@ -102,7 +107,7 @@
 			    <version>6.1.6</version>
 			    <configuration>
 			     <format>ALL</format>
-			     <failBuildOnCVSS>11.0</failBuildOnCVSS> <!-- fail the build for CVSS greater than or equal to 9 -->
+			     <failBuildOnCVSS>8</failBuildOnCVSS> <!-- fail the build for CVSS greater than or equal to 9 -->
 
 			     <!-- 
 			      use internal mirroring of CVE contents 
@@ -119,9 +124,8 @@
 			                 -->
 			    </configuration>
 			   </plugin>
-			
+
 		</plugins>
-		
 	</build>
 
 </project>
