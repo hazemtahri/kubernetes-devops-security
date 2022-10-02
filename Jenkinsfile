@@ -141,6 +141,26 @@ stage('K8S Deployment - DEV') {
          }
        }
     }
+
+     stage('K8S CIS Benchmark') {
+       steps {
+         script {
+
+           parallel(
+             "Master": {
+               sh "bash cis-master.sh"
+             },
+             "Etcd": {
+               sh "bash cis-etcd.sh"
+             },
+             "Kubelet": {
+               sh "bash cis-kubelet.sh"
+             }
+           )
+
+         }
+       }
+     }
     stage('Prompte to PROD?') {
            steps {
              timeout(time: 2, unit: 'DAYS') {
