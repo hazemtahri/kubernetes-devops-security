@@ -20,7 +20,7 @@ pipeline {
         }  
 	  
 	  
-     /*stage('Unit Testing') {
+     stage('Unit Testing') {
             steps {
               sh "mvn test"
               
@@ -33,10 +33,11 @@ pipeline {
      }   
 		 post {
              always {
+             pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
               
 		 
 		
-           /*}    
+           }
         }  
      
           }
@@ -72,7 +73,7 @@ pipeline {
 	 		 	
        	)
        }
-     }*/
+     }
             
      stage('Docker Build and Push') {
        steps {
@@ -153,10 +154,10 @@ stage('K8S Deployment - DEV') {
 
 	 post {
              always {
-              // junit 'target/surefire-reports/*.xml'
-               //jacoco execPattern: 'target/jacoco.exec'
-		
-		//dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+               junit 'target/surefire-reports/*.xml'
+               jacoco execPattern: 'target/jacoco.exec'
+
+		dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
 publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'HTML Report', reportTitles: 'index.html', useWrapperFileDirectly: true])
         sendNotification currentBuild.result }
         }
