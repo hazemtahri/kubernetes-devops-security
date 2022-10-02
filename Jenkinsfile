@@ -1,3 +1,4 @@
+@Library('slack') _
 pipeline {
   agent any
 	
@@ -148,7 +149,8 @@ stage('K8S Deployment - DEV') {
                //jacoco execPattern: 'target/jacoco.exec'
 		
 		//dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'HTML Report', reportTitles: 'index.html', useWrapperFileDirectly: true])           }   
+publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'HTML Report', reportTitles: 'index.html', useWrapperFileDirectly: true])
+        sendNotification currentBuild.result }
         }
 }
 
