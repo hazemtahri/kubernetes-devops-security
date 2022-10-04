@@ -244,13 +244,13 @@ pipeline {
 
 
 	 post {
-             always {
-               junit 'target/surefire-reports/*.xml'
-               jacoco execPattern: 'target/jacoco.exec'
-
-		dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'HTML Report', reportTitles: 'index.html', useWrapperFileDirectly: true])
-         }
+//              always {
+//                junit 'target/surefire-reports/*.xml'
+//                jacoco execPattern: 'target/jacoco.exec'
+//
+// 		dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+// publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'HTML Report', reportTitles: 'index.html', useWrapperFileDirectly: true])
+//          }
         success {
                 	script {
         		        /* Use slackNotifier.groovy from shared library and provide current build result as parameter */
