@@ -55,7 +55,12 @@ pipeline {
               sh "mvn clean package -DskipTests=true"
               archive 'target/*.jar' 
             }
-        }  
+        }
+       stage('Testing Slack - Error Stage') {
+             steps {
+                 sh 'exit 1'
+             }
+           }
 	  
 	  
 //      stage('Unit Testing') {
